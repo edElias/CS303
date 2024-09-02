@@ -18,21 +18,18 @@
     <ClCompile Include="assignment01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\temp\Assignment01\Q1.cpp">
+    <ClCompile Include="ReadFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\temp\Assignment01\Q2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Function.cpp">
+    <ClCompile Include="Q1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\temp\Assignment01\Q1.h">
+    <ClInclude Include="ReadFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Function.h">
+    <ClInclude Include="Q1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

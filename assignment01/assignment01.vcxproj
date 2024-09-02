@@ -127,14 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\temp\Assignment01\Q1.cpp" />
-    <ClCompile Include="..\..\temp\Assignment01\Q2.cpp" />
     <ClCompile Include="assignment01.cpp" />
-    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="ReadFile.cpp" />
+    <ClCompile Include="Q1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\temp\Assignment01\Q1.h" />
-    <ClInclude Include="Function.h" />
+    <ClInclude Include="ReadFile.h" />
+    <ClInclude Include="Q1.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
