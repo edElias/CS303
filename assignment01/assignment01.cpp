@@ -1,6 +1,5 @@
-// assignment01.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include <iostream>
+#include <limits> // For numeric_limits
 #include "ReadFile.h"
 using namespace std;
 
@@ -14,8 +13,7 @@ int main() {
     readFile(arr, numPlace, currentSize); // Call readFile to fill the array
 
     NumberSearcher searcher(arr, numPlace, currentSize);
-    //Q1 FUNCTIONS
-    
+
     while (running) {
         // Display menu
         cout << "\nMenu:\n";
@@ -23,16 +21,26 @@ int main() {
         cout << "2. Modify a number in the array\n";
         cout << "3. Add a number to the array\n";
         cout << "4. Remove a number from the array\n";
-        //cout << "5. Display array\n"; UNCOMMENT for testing
-        cout << "5. Exit\n"; //change to 6 for testing
+        //cout << "5. Display array\n"; // UNCOMMENT for testing
+        cout << "5. Exit\n"; // Change to 6 for testing
         cout << "Enter your choice: ";
-        cin >> choice;
+
+        // Validate menu choice input
+        while (!(cin >> choice)) {
+            cin.clear(); // Clear the error flag on cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+            cout << "Invalid input. Please enter a number for your choice: ";
+        }
 
         switch (choice) {
         case 1:
             // Find a number in the array
             cout << "Enter a number to find: ";
-            cin >> userIn1;
+            while (!(cin >> userIn1)) {
+                cin.clear(); // Clear the error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+                cout << "Invalid input. Please enter a valid number to find: ";
+            }
             searcher.findNumber(userIn1);
             break;
 
@@ -40,9 +48,13 @@ int main() {
             // Modify a number in the array with exception handling
             try {
                 cout << "\nEnter an index and a number you would like to replace it with: ";
-                cin >> userIn1 >> userIn2;
+                while (!(cin >> userIn1 >> userIn2)) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid input. Please enter valid numbers for the index and replacement: ";
+                }
 
-                // Ensure the index is within valid range
+                // Ensure the index is within a valid range
                 if (userIn1 < 0 || userIn1 >= currentSize) {
                     throw out_of_range("Invalid index. Please enter an index within the array bounds.");
                 }
@@ -63,19 +75,13 @@ int main() {
             // Add a number to the array with exception handling
             try {
                 cout << "\nEnter a number to add to the array: ";
-                cin >> userIn1;
-
-                // Check if the user input is a valid integer
-                if (cin.fail()) {
-                    throw invalid_argument("Invalid input. Please enter a valid integer.");
+                while (!(cin >> userIn1)) {
+                    cin.clear(); // Clear the error flag
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+                    cout << "Invalid input. Please enter a valid number to add: ";
                 }
 
                 searcher.addToEnd(userIn1);
-            }
-            catch (const invalid_argument& e) {
-                cout << "Error: " << e.what() << endl;
-                cin.clear(); // Clear the error flag on cin
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
             }
             catch (...) {
                 cout << "An unexpected error occurred while adding to the array." << endl;
@@ -85,20 +91,24 @@ int main() {
         case 4:
             // Remove a number from the array
             cout << "\nEnter an index to remove that value: ";
-            cin >> userIn1;
+            while (!(cin >> userIn1)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Please enter a valid index to remove: ";
+            }
             searcher.removeIndex(userIn1);
             break;
 
-        //case 5: UNCOMMENT for testing
-        //    // Display the array
-        //    cout << "Current array: ";
-        //    for (int i = 0; i < currentSize; ++i) {
-        //        cout << arr[i] << " ";
-        //    }
-        //    cout << endl;
-        //    break;
+            // case 5: UNCOMMENT for testing
+            //    // Display the array
+            //    cout << "Current array: ";
+            //    for (int i = 0; i < currentSize; ++i) {
+            //        cout << arr[i] << " ";
+            //    }
+            //    cout << endl;
+            //    break;
 
-        case 5://change to 6 for testing
+        case 5: // Change to 6 for testing
             // Exit the program
             running = false;
             break;

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\assignment01",
+    "\\assignment01\\assignment01",
+    "\\assignment01\\assignment01\\x64",
+    "\\assignment01\\assignment01\\x64\\Debug"
   ],
-  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
